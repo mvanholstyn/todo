@@ -1,20 +1,23 @@
 <h1>Listing todos</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-  </tr>
+<div class="todo_list">
+  <%= link_to 'New Todo', new_todo_path, :class => "new_todo" %>
 
-<% @todos.each do |todo| %>
-  <tr>
-    <td><%=h todo.title %></td>
-    <td><%= link_to 'Show', todo %></td>
-    <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-    <td><%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <% form_for(Todo.new) do |f| %>
+    <%= f.error_messages %>
+  
+    <p>
+      <%= f.label :title, "New Todo" %><br />
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.submit 'Create' %> or <%= link_to "cancel", todos_path, :class => "cancel" %>
+    </p>
+  <% end %>
 
-<br />
-
-<%= link_to 'New todo', new_todo_path %>
+  <ul class="todos">
+    <% @todos.each do |todo| %>
+      <%= render :partial => "todo", :locals => { :todo => todo } %>
+    <% end %>
+  </ul>
+</div>

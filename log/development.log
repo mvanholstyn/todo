@@ -1,0 +1,769 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (25.4ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTodos (20091020163832)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "todos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091020163832')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("todos")[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:41:10) [GET]
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 174ms (View: 170, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:42:41) [GET]
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+
+ActionView::TemplateError (undefined method `name' for #<TodosController:0x104460280>) on line #7 of app/views/layouts/application.html.erb:
+4: <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+5: <head>
+6:   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+7:   <title><%= controller.name %>: <%= controller.action_name %></title>
+8:   <%= javascript_include_tag :all, :cache => true %>
+9:   <%= stylesheet_link_tag 'scaffold' %>
+10: </head>
+
+    app/views/layouts/application.html.erb:7
+    app/controllers/todos_controller.rb:7:in `index'
+
+Rendered rescues/_trace (42.0ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:42:46) [GET]
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:42:53) [GET]
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 11ms (View: 7, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:45:10) [GET]
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #4 of app/views/todos/index.html.erb:
+1: <h1>Listing todos</h1>
+2: 
+3: <%= link_to 'New todo', new_todo_path %>
+4: <% form_for(@todo) do |f| %>
+5:   <%= f.error_messages %>
+6: 
+7:   <p>
+
+    app/views/todos/index.html.erb:4
+    app/controllers/todos_controller.rb:7:in `index'
+
+Rendered rescues/_trace (41.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:45:18) [GET]
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 79ms (View: 75, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#new (for 127.0.0.1 at 2009-10-20 12:45:20) [GET]
+
+Errno::ENOENT (No such file or directory - /Users/mvanholstyn/projects/grrug/2009-10-20/todo/app/views/todos/new.html.erb):
+  app/controllers/todos_controller.rb:29:in `new'
+
+Rendered rescues/_trace (40.9ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:45:22) [GET]
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 10ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:45:31) [GET]
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 10ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:45:33) [GET]
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 11ms (View: 7, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 12:45:40) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"First TODO"}}
+  [4;35;1mTodo Create (0.4ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 16:45:40', 'First TODO', '2009-10-20 16:45:40')[0m
+Redirected to http://localhost:3000/todos/1
+Completed in 10ms (DB: 0) | 302 Found [http://localhost/todos]
+
+
+Processing TodosController#show (for 127.0.0.1 at 2009-10-20 12:45:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodo Load (0.2ms)[0m   [0;1mSELECT * FROM "todos" WHERE ("todos"."id" = 1) [0m
+
+Errno::ENOENT (No such file or directory - /Users/mvanholstyn/projects/grrug/2009-10-20/todo/app/views/todos/show.html.erb):
+  app/controllers/todos_controller.rb:18:in `show'
+
+Rendered rescues/_trace (39.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TodosController#show (for 127.0.0.1 at 2009-10-20 12:47:05) [GET]
+  Parameters: {"id"=>"1"}
+
+Errno::ENOENT (No such file or directory - /Users/mvanholstyn/projects/grrug/2009-10-20/todo/app/views/todos/show.html.erb):
+  
+
+Rendered rescues/_trace (98.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:47:07) [GET]
+  [4;35;1mTodo Load (0.4ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 13ms (View: 9, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:47:07) [GET]
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 12:47:10) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Second TODO"}}
+  [4;35;1mTodo Create (0.3ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 16:47:10', 'Second TODO', '2009-10-20 16:47:10')[0m
+Redirected to http://localhost:3000/todos
+Completed in 9ms (DB: 0) | 302 Found [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:47:10) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 16ms (View: 13, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:47:22) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 20ms (View: 16, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:52:28) [GET]
+  [4;36;1mTodo Load (0.6ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 92ms (View: 87, DB: 1) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 12:52:46) [GET]
+  [4;35;1mTodo Load (1.8ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 23ms (View: 17, DB: 2) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:32:12) [GET]
+  [4;36;1mTodo Load (1.1ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 160ms (View: 153, DB: 1) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:32:14) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 17ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:35:31) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 21ms (View: 17, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:35:32) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 16ms (View: 12, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:35:49) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 16ms (View: 12, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:36:14) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 16ms (View: 12, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:36:32) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 20ms (View: 16, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:36:40) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 18ms (View: 14, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:37:44) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 22ms (View: 17, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:39:06) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 22ms (View: 18, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:39:26) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 17ms (View: 13, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:39:34) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 23ms (View: 17, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:40:21) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 19ms (View: 15, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:43:13) [GET]
+  [4;35;1mTodo Load (17.2ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 64ms (View: 41, DB: 17) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:48:54) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 76ms (View: 72, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#show (for 127.0.0.1 at 2009-10-20 13:48:58) [GET]
+  Parameters: {"id"=>"1"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, edit, index, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:49:06) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:49:15) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#show (for 127.0.0.1 at 2009-10-20 13:49:20) [GET]
+  Parameters: {"id"=>"1"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, edit, index, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing TodosController#show (for 127.0.0.1 at 2009-10-20 13:49:32) [GET]
+  Parameters: {"id"=>"1"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, edit, index, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:49:33) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:49:33) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:49:42) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 15ms (View: 8, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:49:51) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:49:59) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 16ms (View: 12, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#show (for 127.0.0.1 at 2009-10-20 13:50:00) [GET]
+  Parameters: {"id"=>"1"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, edit, index, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:50:01) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 68ms (View: 64, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:50:02) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 13ms (View: 9, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:50:05) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:50:10) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 16ms (View: 12, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:50:31) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#destroy (for 127.0.0.1 at 2009-10-20 13:50:34) [DELETE]
+  Parameters: {"id"=>"1", "_"=>""}
+  [4;35;1mTodo Load (0.2ms)[0m   [0mSELECT * FROM "todos" WHERE ("todos"."id" = 1) [0m
+  [4;36;1mTodo Destroy (0.3ms)[0m   [0;1mDELETE FROM "todos" WHERE "id" = 1[0m
+Redirected to http://localhost:3000/todos
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/todos/1]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:50:34) [GET]
+  [4;35;1mTodo Load (0.4ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 69ms (View: 8, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:50:45) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 18ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TodosController#destroy (for 127.0.0.1 at 2009-10-20 13:50:47) [DELETE]
+  Parameters: {"id"=>"2", "_"=>""}
+  [4;35;1mTodo Load (0.2ms)[0m   [0mSELECT * FROM "todos" WHERE ("todos"."id" = 2) [0m
+  [4;36;1mTodo Destroy (0.3ms)[0m   [0;1mDELETE FROM "todos" WHERE "id" = 2[0m
+Redirected to http://localhost:3000/todos
+Completed in 9ms (DB: 0) | 302 Found [http://localhost/todos/2]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:50:47) [GET]
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 11ms (View: 7, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 13:50:52) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Another"}}
+  [4;36;1mTodo Create (15.5ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 17:50:52', 'Another', '2009-10-20 17:50:52')[0m
+Redirected to http://localhost:3000/todos
+Completed in 35ms (DB: 15) | 302 Found [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:50:52) [GET]
+  [4;35;1mTodo Load (0.4ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 11ms (View: 7, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:55:05) [GET]
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:59:42) [GET]
+  [4;35;1mTodo Load (0.4ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (1.1ms)
+Completed in 88ms (View: 83, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 13:59:48) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Eay Lunch"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 17:59:48', 'Eay Lunch', '2009-10-20 17:59:48')[0m
+Rendering todos/create
+
+ActionView::TemplateError (Missing template todos/_todo.erb in view path app/views) on line #3 of app/views/todos/create.json.erb:
+1: <%= {
+2:   :notice => 'Todo was successfully created.',
+3:   :html => render(:partial => "todo", :locals => { :todo => @todo })
+4: }.to_json %>
+
+    app/views/todos/create.json.erb:3
+    app/controllers/todos_controller.rb:10:in `create'
+
+Rendered rescues/_trace (44.2ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 13:59:55) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Completed in 13ms (View: 9, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:00:05) [GET]
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:00:27) [GET]
+  [4;35;1mTodo Load (0.6ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Completed in 15ms (View: 9, DB: 1) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:00:31) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Run a mile"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:00:31', 'Run a mile', '2009-10-20 18:00:31')[0m
+Rendering todos/create
+
+ActionView::TemplateError (Missing template todos/_todo.erb in view path app/views) on line #3 of app/views/todos/create.json.erb:
+1: <%= {
+2:   :notice => 'Todo was successfully created.',
+3:   :html => render(:partial => "todo", :locals => { :todo => @todo })
+4: }.to_json %>
+
+    app/views/todos/create.json.erb:3
+    app/controllers/todos_controller.rb:10:in `create'
+
+Rendered rescues/_trace (101.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:01:22) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Run a mile"}, "_"=>""}
+  [4;35;1mTodo Create (0.3ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:01:22', 'Run a mile', '2009-10-20 18:01:22')[0m
+Rendering todos/create
+Rendered todos/_todo (1.0ms)
+Completed in 16ms (View: 6, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:01:24) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Run a mile"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:01:24', 'Run a mile', '2009-10-20 18:01:24')[0m
+Rendering todos/create
+Rendered todos/_todo (0.8ms)
+Completed in 12ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:01:25) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Run a mile"}, "_"=>""}
+  [4;35;1mTodo Create (0.4ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:01:25', 'Run a mile', '2009-10-20 18:01:25')[0m
+Rendering todos/create
+Rendered todos/_todo (0.9ms)
+Completed in 13ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:01:46) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Eat DIner"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:01:46', 'Eat DIner', '2009-10-20 18:01:46')[0m
+Rendering todos/create
+Rendered todos/_todo (1.0ms)
+Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:01:50) [GET]
+  [4;35;1mTodo Load (0.7ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.8ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Completed in 16ms (View: 12, DB: 1) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:01:51) [GET]
+  [4;36;1mTodo Load (0.7ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Completed in 17ms (View: 12, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:01:56) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Eat Dinner"}, "_"=>""}
+  [4;35;1mTodo Create (0.3ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:01:56', 'Eat Dinner', '2009-10-20 18:01:56')[0m
+Rendering todos/create
+Rendered todos/_todo (0.8ms)
+Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:01:59) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Perpare for GRRUG"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:01:59', 'Perpare for GRRUG', '2009-10-20 18:01:59')[0m
+Rendering todos/create
+Rendered todos/_todo (0.9ms)
+Completed in 12ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:02:04) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Finish Imikimi"}, "_"=>""}
+  [4;35;1mTodo Create (0.4ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:02:04', 'Finish Imikimi', '2009-10-20 18:02:04')[0m
+Rendering todos/create
+Rendered todos/_todo (1.0ms)
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:02:14) [GET]
+  [4;36;1mTodo Load (0.8ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Completed in 19ms (View: 14, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:02:59) [GET]
+  [4;35;1mTodo Load (1.0ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.6ms)
+Completed in 19ms (View: 15, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:03:02) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Run!"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:03:02', 'Run!', '2009-10-20 18:03:02')[0m
+Rendering todos/create
+Rendered todos/_todo (0.8ms)
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:03:08) [GET]
+  [4;35;1mTodo Load (0.9ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.8ms)
+Rendered todos/_todo (62.2ms)
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.7ms)
+Completed in 82ms (View: 77, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:03:11) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Faster!"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:03:11', 'Faster!', '2009-10-20 18:03:11')[0m
+Rendering todos/create
+Rendered todos/_todo (0.8ms)
+Completed in 12ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:03:17) [GET]
+  [4;35;1mTodo Load (1.0ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Completed in 20ms (View: 16, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:03:21) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"FASTER!"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:03:21', 'FASTER!', '2009-10-20 18:03:21')[0m
+Rendering todos/create
+Rendered todos/_todo (0.8ms)
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#destroy (for 127.0.0.1 at 2009-10-20 14:03:27) [DELETE]
+  Parameters: {"id"=>"3", "_"=>""}
+  [4;35;1mTodo Load (0.2ms)[0m   [0mSELECT * FROM "todos" WHERE ("todos"."id" = 3) [0m
+  [4;36;1mTodo Destroy (0.3ms)[0m   [0;1mDELETE FROM "todos" WHERE "id" = 3[0m
+Redirected to http://localhost:3000/todos
+Completed in 9ms (DB: 0) | 302 Found [http://localhost/todos/3]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:03:27) [GET]
+  [4;35;1mTodo Load (1.1ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (1.1ms)
+Completed in 22ms (View: 17, DB: 1) | 200 OK [http://localhost/todos]

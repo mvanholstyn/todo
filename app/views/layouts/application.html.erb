@@ -4,12 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Todos: <%= controller.action_name %></title>
+  <title><%= controller.controller_name %>: <%= controller.action_name %></title>
+  <%= javascript_include_tag :all, :cache => true %>
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
+<p class="notice"><%= flash[:notice] %></p>
 
 <%= yield %>
 
