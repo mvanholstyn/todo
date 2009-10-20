@@ -1,3 +1,57 @@
+function deleteTodo(delete_control, message) {
+  if(confirm(message)) {
+    delete_control.request({
+      requestHeaders: { 'Accept': 'application/json' },
+      method: 'delete'
+    });
+    delete_control.up(".todo").fade();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // var TodoList = Behavior.create({
 //   initialize: function() {
 //     this.notice                  = $$(".notice").first();
