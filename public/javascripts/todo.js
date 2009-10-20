@@ -66,12 +66,11 @@ var TodoList = Class.create({
   showNotice: function(notice) {
     this.notice.update(notice);
     this.notice.appear();
-    this.hideNotice.delay(10);
+    this.hideNotice.bind(this).delay(10);
   },
   
   hideNotice: function() {
     this.notice.fade();
-    this.notice.update("");
   },
   
   showErrors: function(errors) {

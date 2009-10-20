@@ -910,3 +910,136 @@ Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:15:06) [POST]
 Rendering todos/create
 Rendered todos/_todo (0.7ms)
 Completed in 12ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:15:57) [GET]
+  [4;36;1mTodo Load (1.2ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Completed in 25ms (View: 19, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:16:01) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"Lunch with Zach"}, "_"=>""}
+  [4;35;1mTodo Create (0.3ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:16:01', 'Lunch with Zach', '2009-10-20 18:16:01')[0m
+Rendering todos/create
+Rendered todos/_todo (1.7ms)
+Completed in 14ms (View: 4, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:16:21) [GET]
+  [4;36;1mTodo Load (1.8ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.8ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (1.1ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Completed in 28ms (View: 22, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:16:23) [GET]
+  [4;35;1mTodo Load (1.4ms)[0m   [0mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Completed in 87ms (View: 19, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:16:25) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"sadfsd"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:16:25', 'sadfsd', '2009-10-20 18:16:25')[0m
+Rendering todos/create
+Rendered todos/_todo (0.7ms)
+Completed in 12ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:17:30) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"sadfsadf"}, "_"=>""}
+  [4;35;1mTodo Create (0.3ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:17:30', 'sadfsadf', '2009-10-20 18:17:30')[0m
+Rendering todos/create
+Rendered todos/_todo (0.7ms)
+Completed in 12ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:20:24) [GET]
+  [4;36;1mTodo Load (1.3ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Completed in 38ms (View: 33, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:20:27) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"123"}, "_"=>""}
+  [4;35;1mTodo Create (0.3ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:20:27', '123', '2009-10-20 18:20:27')[0m
+Rendering todos/create
+Rendered todos/_todo (0.8ms)
+Completed in 12ms (View: 2, DB: 0) | 200 OK [http://localhost/todos]
