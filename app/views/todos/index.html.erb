@@ -16,8 +16,6 @@
   <% end %>
 
   <ul class="todos">
-    <% @todos.each do |todo| %>
-      <%= render :partial => "todo", :locals => { :todo => todo } %>
-    <% end %>
+    <%= render :partial => @todos %>
   </ul>
 </div>

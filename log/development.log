@@ -767,3 +767,49 @@ Rendered todos/_todo (0.5ms)
 Rendered todos/_todo (0.6ms)
 Rendered todos/_todo (1.1ms)
 Completed in 22ms (View: 17, DB: 1) | 200 OK [http://localhost/todos]
+
+
+Processing TodosController#index (for 127.0.0.1 at 2009-10-20 14:05:13) [GET]
+  [4;36;1mTodo Load (1.0ms)[0m   [0;1mSELECT * FROM "todos" [0m
+Rendering template within layouts/application
+Rendering todos/index
+Rendered todos/_todo (1.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (61.5ms)
+Rendered todos/_todo (0.8ms)
+Rendered todos/_todo (0.7ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.6ms)
+Rendered todos/_todo (0.5ms)
+Rendered todos/_todo (0.5ms)
+Completed in 119ms (View: 114, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:05:17) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"hmmm"}, "_"=>""}
+  [4;35;1mTodo Create (0.4ms)[0m   [0mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:05:17', 'hmmm', '2009-10-20 18:05:17')[0m
+Rendering todos/create
+
+ActionView::TemplateError (Missing template todos/_todo.erb in view path app/views) on line #3 of app/views/todos/create.json.erb:
+1: <%= {
+2:   :notice => 'Todo was successfully created.',
+3:   :html => render(:partial => @todo)
+4: }.to_json %>
+
+    app/views/todos/create.json.erb:3
+    app/controllers/todos_controller.rb:10:in `create'
+
+Rendered rescues/_trace (46.1ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TodosController#create (for 127.0.0.1 at 2009-10-20 14:06:20) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ADnScyIyj+iKqo8Z18AIWZBar1jsclqVqHIjjINZD+0=", "todo"=>{"title"=>"hmmm"}, "_"=>""}
+  [4;36;1mTodo Create (0.3ms)[0m   [0;1mINSERT INTO "todos" ("created_at", "title", "updated_at") VALUES('2009-10-20 18:06:20', 'hmmm', '2009-10-20 18:06:20')[0m
+Rendering todos/create
+Rendered todos/_todo (1.2ms)
+Completed in 26ms (View: 7, DB: 0) | 200 OK [http://localhost/todos]
