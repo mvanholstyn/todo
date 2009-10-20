@@ -1,20 +1,20 @@
-var TodoList = Class.create({
-  initialize: function(todo_list) {
+var TodoList = Behavior.create({
+  initialize: function() {
     this.notice                  = $$(".notice").first();
-    this.todo_list               = todo_list;
+    this.todo_list               = this.element;
     this.new_todo_control        = this.todo_list.down("a.new_todo")
     this.new_todo_form           = this.todo_list.down("form.new_todo");
     this.new_todo_form_errors    = this.new_todo_form.down(".errors");
     this.cancel_new_todo_control = this.new_todo_form.down(".cancel");
     this.todos                   = this.todo_list.down(".todos");
-    
-    this.notice.hide();
-    this.new_todo_form.hide();
 
     this.new_todo_control.observeExclusively("click", this.showNewTodoForm.bind(this));
     this.cancel_new_todo_control.observeExclusively("click", this.hideNewTodoForm.bind(this));
     this.new_todo_form.observeExclusively("submit", this.createNewTodo.bind(this));
     this.todos.select(".todo").each(this.initializeTodo.bind(this));
+
+    this.notice.hide();
+    this.new_todo_form.hide();
   },
   
   initializeTodo: function(todo) {
@@ -24,12 +24,12 @@ var TodoList = Class.create({
   
   showNewTodoForm: function() {
     this.new_todo_control.hide();
-    this.new_todo_form.blindDown({ duration: 0.5 });
+    this.new_todo_form.show();
     this.new_todo_form.focusFirstElement();
   },
   
   hideNewTodoForm: function() {
-    this.new_todo_form.blindUp({ duration: 0.5 });
+    this.new_todo_form.hide();
     this.new_todo_form.reset();
     this.new_todo_form_errors.update("");
     this.new_todo_control.show();
@@ -78,8 +78,6 @@ var TodoList = Class.create({
   }
 });
 
-document.observe('dom:loaded', function() {
-  $$(".todo_list").each(function(todo_list) {
-    new TodoList(todo_list);
-  });
+Event.addBehavior({
+  '.todo_list': TodoList
 });
