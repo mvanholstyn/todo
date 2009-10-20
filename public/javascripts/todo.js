@@ -50,10 +50,11 @@ var TodoList = Class.create({
   },
   
   insertNewTodo: function(html) {
-    var element = Element.fromHTML(html);
-    element.hide();
-    this.todos.insert({ bottom: element });
-    element.appear();
+    var todo = Element.fromHTML(html);
+    this.initializeTodo(todo);
+    todo.hide();
+    this.todos.insert(todo);
+    todo.appear();
   },
 
   deleteTodo: function(todo, delete_control) {
