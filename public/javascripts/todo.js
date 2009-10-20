@@ -14,7 +14,8 @@ function insertNewTodo(html) {
     todo.appear();
 }
 
-function deleteTodo(delete_control, message) {
+function deleteTodo(delete_control) {
+  var message = delete_control.getAttribute("data-confirm-message");
   if(confirm(message)) {
     delete_control.request({
       method: 'delete'
@@ -23,8 +24,15 @@ function deleteTodo(delete_control, message) {
   }
 }
 
+document.observe('dom:loaded', function() {
+  $$(".todo_list .todos .todo .delete").each(function(todo) {
+    todo.observeExclusively("click", deleteTodo.bind(this, todo));
+  });
 
-
+  $$(".todo_list form.new_todo").each(function(new_tag_form) {
+    new_tag_form.observeExclusively("submit", createNewTodo.bind(this, new_tag_form));
+  });
+});
 
 
 

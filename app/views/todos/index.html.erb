@@ -3,7 +3,7 @@
 <div class="todo_list">
   <%= link_to 'New Todo', new_todo_path, :class => "new_todo" %>
 
-  <% form_for(Todo.new, :html => { :onsubmit => "createNewTodo(this); return false;" }) do |f| %>
+  <% form_for(Todo.new) do |f| %>
     <div class="errors"><%= f.error_messages %></div>
   
     <p>

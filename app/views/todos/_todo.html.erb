@@ -1,5 +1,5 @@
 <li class="todo">
   <%= check_box_tag :complete %>
   <%=h todo.title %>
-  <%= link_to 'Delete', todo, :class => "delete", :onclick => "deleteTodo(this, 'Are you sure you want to delete #{todo.title}?'); return false;" %>
+  <%= link_to 'Delete', todo, :class => "delete", :"data-confirm-message" => "Are you sure you want to delete #{todo.title}?" %>
 </li>
