@@ -6,10 +6,12 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(params[:todo])
 
-    if @todo.save
-      respond_to :json
-    else
-      respond_to do |format|
+    respond_to do |format|
+      if @todo.save
+        format.html { redirect_to todos_path }
+        format.json
+      else
+        format.html { render 'index' }
         format.json { render 'errors', :status => :unprocessable_entity  }
       end
     end
@@ -17,6 +19,10 @@ class TodosController < ApplicationController
 
   def destroy
     @todo = Todo.destroy(params[:id])
-    head :ok
+
+    respond_to do |format|
+      format.html { redirect_to todos_path }
+      format.json { head :ok }
+    end
   end
 end
