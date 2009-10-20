@@ -9,23 +9,9 @@ class TodosController < ApplicationController
     if @todo.save
       respond_to :json
     else
-      # TODO: Can't do this
-      render :action => "new"
-    end
-  end
-
-  def edit
-    @todo = Todo.find(params[:id])
-  end
-
-  def update
-    @todo = Todo.find(params[:id])
-
-    if @todo.update_attributes(params[:todo])
-      flash[:notice] = 'Todo was successfully updated.'
-      redirect_to todos_path
-    else
-      render :action => "edit"
+      respond_to do |format|
+        format.json { render 'errors', :status => :unprocessable_entity  }
+      end
     end
   end
 

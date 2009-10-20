@@ -1,10 +1,10 @@
-<h1>Listing todos</h1>
+<h1>Todos</h1>
 
 <div class="todo_list">
   <%= link_to 'New Todo', new_todo_path, :class => "new_todo" %>
 
   <% form_for(Todo.new) do |f| %>
-    <%= f.error_messages %>
+    <div class="errors"><%= f.error_messages %></div>
   
     <p>
       <%= f.label :title, "New Todo" %><br />

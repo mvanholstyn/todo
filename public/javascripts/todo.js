@@ -1,8 +1,12 @@
 var TodoList = Class.create({
   initialize: function(todo_list) {
+    this.notice = $$(".notice").first();
+    this.notice.hide();
+
     this.todo_list               = todo_list;
     this.new_todo_control        = this.todo_list.down("a.new_todo")
     this.new_todo_form           = this.todo_list.down("form.new_todo");
+    this.new_todo_form_errors    = this.new_todo_form.down(".errors");
     this.cancel_new_todo_control = this.new_todo_form.down(".cancel");
     this.todos                   = this.todo_list.down(".todos");
     
@@ -28,6 +32,7 @@ var TodoList = Class.create({
   hideNewTodoForm: function() {
     this.new_todo_form.hide();
     this.new_todo_form.reset();
+    this.new_todo_form_errors.update("");
     this.new_todo_control.show();
   },
   
@@ -37,6 +42,9 @@ var TodoList = Class.create({
         this.hideNewTodoForm();
         this.showNotice(json.notice);
         this.insertNewTodo(json.html);
+      }.bindAsJSONResponse(this),
+      on422: function(json) {
+        this.showErrors(json.errors);
       }.bindAsJSONResponse(this)
     });
   },
@@ -56,7 +64,18 @@ var TodoList = Class.create({
   },
   
   showNotice: function(notice) {
-    $$(".notice").first().update(notice);
+    this.notice.update(notice);
+    this.notice.appear();
+    this.hideNotice.delay(10);
+  },
+  
+  hideNotice: function() {
+    this.notice.fade();
+    this.notice.update("");
+  },
+  
+  showErrors: function(errors) {
+    this.new_todo_form_errors.update(errors);
   }
 });
 
