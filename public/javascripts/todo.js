@@ -57,7 +57,7 @@ var TodoList = Behavior.create({
   },
 
   deleteTodo: function(todo, delete_control) {
-    if(confirm("Are you sure?")) {
+    if(confirm(delete_control.getAttribute("data-confirm-message"))) {
       delete_control.request({ method: 'delete' });
       todo.fade();
     }
