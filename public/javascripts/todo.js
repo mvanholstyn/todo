@@ -1,51 +1,64 @@
-function createNewTodo(new_todo_form) {
-  new_todo_form.request({
-    onSuccess: function(response) {
-      new_todo_form.reset();
-      hideErrors();
-      insertNewTodo(response.responseText);
-    },
-    on422: function(response) {
-      showErrors(response.responseText);
-    }
-  });
-}
+var TodoList = Behavior.create({
+  initialize: function() {
+    this.todo_list               = this.element;
+    this.new_todo_form           = this.todo_list.down("form.new_todo");
+    this.new_todo_form_errors    = this.new_todo_form.down(".errors");
+    this.todos                   = this.todo_list.down(".todos");
 
-function showErrors(errors) {
-  $$(".todo_list form.new_todo .errors").first().update(errors);
-}
-
-function hideErrors() {
-  $$(".todo_list form.new_todo .errors").first().update("");
-}
-
-function insertNewTodo(html) {
-  var todo = Element.fromHTML(html);
-  todo.hide();
-  $$(".todos").first().insert(todo);
-  todo.appear();
-}
-
-function deleteTodo(delete_control) {
-  var message = delete_control.getAttribute("data-confirm-message");
-  if(confirm(message)) {
-    delete_control.request({
-      method: 'delete'
+    this.new_todo_form.observeExclusively("submit", this.createNewTodo.bind(this));
+    this.todos.select(".todo").each(this.initializeTodo.bind(this));
+  },
+  
+  initializeTodo: function(todo) {
+    var delete_control = todo.down(".delete");
+    delete_control.observeExclusively("click", this.deleteTodo.bind(this, todo, delete_control));
+  },
+  
+  createNewTodo: function() {
+    this.new_todo_form.request({
+      onSuccess: function(response) {
+        this.new_todo_form.reset();
+        this.hideErrors();
+        this.insertNewTodo(response.responseText);
+      }.bind(this),
+      on422: function(response) {
+        this.showErrors(response.responseText);
+      }.bind(this)
     });
-    delete_control.up(".todo").fade();
+  },
+  
+  insertNewTodo: function(html) {
+    var todo = Element.fromHTML(html);
+    this.initializeTodo(todo);
+    todo.hide();
+    this.todos.insert(todo);
+    todo.appear();
+  },
+
+  deleteTodo: function(todo, delete_control) {
+    var message = delete_control.getAttribute("data-confirm-message");
+    if(confirm(message)) {
+      delete_control.request({
+        method: 'delete'
+      });
+      delete_control.up(".todo").fade();
+    }
+  },
+  
+  showErrors: function(errors) {
+    this.new_todo_form_errors.update(errors);
+  },
+  
+  hideErrors: function() {
+    this.new_todo_form_errors.update("");
   }
-}
-
-document.observe('dom:loaded', function() {
-  $$(".todo_list .todos .todo .delete").each(function(todo) {
-    todo.observeExclusively("click", deleteTodo.bind(this, todo));
-  });
-
-  $$(".todo_list form.new_todo").each(function(new_tag_form) {
-    new_tag_form.observeExclusively("submit", createNewTodo.bind(this, new_tag_form));
-  });
 });
 
+document.observe('dom:loaded', function() {
+  $$(".todo_list").each(function(todo_list) {
+    new TodoList(todo_list);
+  });
+});
 
 
 
