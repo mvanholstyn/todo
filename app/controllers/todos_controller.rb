@@ -13,6 +13,7 @@ class TodosController < ApplicationController
           redirect_to todos_path
         end
         format.json
+        format.js { render @todo }
       else
         format.html { render 'index' }
         format.json { render 'errors', :status => :unprocessable_entity  }
@@ -29,6 +30,7 @@ class TodosController < ApplicationController
         redirect_to todos_path
       end
       format.json
+      format.js  { head :ok }
     end
   end
 end

@@ -1,7 +1,22 @@
+function createNewTodo(new_todo_form) {
+  new_todo_form.request({
+    onSuccess: function(response) {
+      new_todo_form.reset();
+      insertNewTodo(response.responseText);
+    }
+  });
+}
+
+function insertNewTodo(html) {
+    var todo = Element.fromHTML(html);
+    todo.hide();
+    $$(".todos").first().insert(todo);
+    todo.appear();
+}
+
 function deleteTodo(delete_control, message) {
   if(confirm(message)) {
     delete_control.request({
-      requestHeaders: { 'Accept': 'application/json' },
       method: 'delete'
     });
     delete_control.up(".todo").fade();
