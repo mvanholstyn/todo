@@ -1,8 +1,6 @@
 var TodoList = Class.create({
   initialize: function(todo_list) {
-    this.notice = $$(".notice").first();
-    this.notice.hide();
-
+    this.notice                  = $$(".notice").first();
     this.todo_list               = todo_list;
     this.new_todo_control        = this.todo_list.down("a.new_todo")
     this.new_todo_form           = this.todo_list.down("form.new_todo");
@@ -10,7 +8,8 @@ var TodoList = Class.create({
     this.cancel_new_todo_control = this.new_todo_form.down(".cancel");
     this.todos                   = this.todo_list.down(".todos");
     
-    this.hideNewTodoForm();
+    this.notice.hide();
+    this.new_todo_form.hide();
 
     this.new_todo_control.observeExclusively("click", this.showNewTodoForm.bind(this));
     this.cancel_new_todo_control.observeExclusively("click", this.hideNewTodoForm.bind(this));
@@ -25,12 +24,12 @@ var TodoList = Class.create({
   
   showNewTodoForm: function() {
     this.new_todo_control.hide();
-    this.new_todo_form.show();
+    this.new_todo_form.blindDown({ duration: 0.5 });
     this.new_todo_form.focusFirstElement();
   },
   
   hideNewTodoForm: function() {
-    this.new_todo_form.hide();
+    this.new_todo_form.blindUp({ duration: 0.5 });
     this.new_todo_form.reset();
     this.new_todo_form_errors.update("");
     this.new_todo_control.show();
