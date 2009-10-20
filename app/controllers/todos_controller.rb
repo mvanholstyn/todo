@@ -16,7 +16,8 @@ class TodosController < ApplicationController
         format.js { render @todo }
       else
         format.html { render 'index' }
-        format.json { render 'errors', :status => :unprocessable_entity  }
+        format.json { render 'errors', :status => :unprocessable_entity }
+        format.js { render 'errors', :layout => false, :status => :unprocessable_entity }
       end
     end
   end

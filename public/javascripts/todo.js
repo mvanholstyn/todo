@@ -2,16 +2,28 @@ function createNewTodo(new_todo_form) {
   new_todo_form.request({
     onSuccess: function(response) {
       new_todo_form.reset();
+      hideErrors();
       insertNewTodo(response.responseText);
+    },
+    on422: function(response) {
+      showErrors(response.responseText);
     }
   });
 }
 
+function showErrors(errors) {
+  $$(".todo_list form.new_todo .errors").first().update(errors);
+}
+
+function hideErrors() {
+  $$(".todo_list form.new_todo .errors").first().update("");
+}
+
 function insertNewTodo(html) {
-    var todo = Element.fromHTML(html);
-    todo.hide();
-    $$(".todos").first().insert(todo);
-    todo.appear();
+  var todo = Element.fromHTML(html);
+  todo.hide();
+  $$(".todos").first().insert(todo);
+  todo.appear();
 }
 
 function deleteTodo(delete_control) {
