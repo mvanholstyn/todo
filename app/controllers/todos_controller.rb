@@ -8,7 +8,10 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to todos_path }
+        format.html do
+          flash[:notice] = 'Todo was successfully created.'
+          redirect_to todos_path
+        end
         format.json
       else
         format.html { render 'index' }
@@ -21,8 +24,11 @@ class TodosController < ApplicationController
     @todo = Todo.destroy(params[:id])
 
     respond_to do |format|
-      format.html { redirect_to todos_path }
-      format.json { head :ok }
+      format.html do
+        flash[:notice] = 'Todo was successfully deleted.'
+        redirect_to todos_path
+      end
+      format.json
     end
   end
 end

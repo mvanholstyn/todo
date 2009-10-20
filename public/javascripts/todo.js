@@ -37,6 +37,7 @@ var TodoList = Behavior.create({
   
   createNewTodo: function() {
     this.new_todo_form.request({
+      requestHeaders: { 'Accept': 'application/json' },
       onSuccess: function(json) {
         this.hideNewTodoForm();
         this.showNotice(json.notice);
@@ -58,7 +59,13 @@ var TodoList = Behavior.create({
 
   deleteTodo: function(todo, delete_control) {
     if(confirm(delete_control.getAttribute("data-confirm-message"))) {
-      delete_control.request({ method: 'delete' });
+      delete_control.request({
+        requestHeaders: { 'Accept': 'application/json' },
+        method: 'delete',
+        onSuccess: function(json) {
+          this.showNotice(json.notice);
+        }.bindAsJSONResponse(this)
+      });
       todo.fade();
     }
   },
