@@ -1,0 +1,7 @@
+- aesthetics 
+- organization 
+- surprises (both good and bad) 
+- consistency 
+- verbosity 
+- workarounds 
+- simplicity
