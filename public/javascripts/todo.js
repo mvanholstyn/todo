@@ -71,10 +71,8 @@ var TodoList = Behavior.create({
   }
 });
 
-document.observe('dom:loaded', function() {
-  $$(".todo_list").each(function(todo_list) {
-    new TodoList(todo_list);
-  });
+Event.addBehavior({
+  '.todo_list': TodoList
 });
 
 
