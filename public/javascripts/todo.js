@@ -1,5 +1,6 @@
 var TodoList = Behavior.create({
   initialize: function() {
+    this.notice                  = $$(".notice").first();
     this.todo_list               = this.element;
     this.new_todo_form           = this.todo_list.down("form.new_todo");
     this.new_todo_form_errors    = this.new_todo_form.down(".errors");
@@ -16,14 +17,16 @@ var TodoList = Behavior.create({
   
   createNewTodo: function() {
     this.new_todo_form.request({
-      onSuccess: function(response) {
+      requestHeaders: { 'Accept': 'application/json' },
+      onSuccess: function(json) {
         this.new_todo_form.reset();
         this.hideErrors();
-        this.insertNewTodo(response.responseText);
-      }.bind(this),
-      on422: function(response) {
-        this.showErrors(response.responseText);
-      }.bind(this)
+        this.showNotice(json.notice);
+        this.insertNewTodo(json.html);
+      }.bindAsJSONResponse(this),
+      on422: function(json) {
+        this.showErrors(json.errors);
+      }.bindAsJSONResponse(this)
     });
   },
   
@@ -39,10 +42,24 @@ var TodoList = Behavior.create({
     var message = delete_control.getAttribute("data-confirm-message");
     if(confirm(message)) {
       delete_control.request({
-        method: 'delete'
+        requestHeaders: { 'Accept': 'application/json' },
+        method: 'delete',
+        onSuccess: function(json) {
+          this.showNotice(json.notice);
+        }.bindAsJSONResponse(this)
       });
-      delete_control.up(".todo").fade();
+      todo.fade();
     }
+  },
+
+  showNotice: function(notice) {
+    this.notice.update(notice);
+    this.notice.appear();
+    this.hideNotice.bind(this).delay(10);
+  },
+  
+  hideNotice: function() {
+    this.notice.fade();
   },
   
   showErrors: function(errors) {
